@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ news_item.title }} :: {{block.super}}
+{% endblock%}
+
+
+
+{% block content %}
+
+            <div class="card mb-3">
+                <div class="card-header">
+                    Категория: <a href="{{ news_item.category.get_absolute_url }}">{{news_item.category}}</a>
+                </div>
+                <div class="card-body">
+<!--                        {% if item.photo %}-->
+<!--                        <img src="{{ news_item.photo.url }}" alt="" width="350" height="200" class="float-left mr-3">-->
+<!--                        {% else %}-->
+<!--                        <img src="https://picsum.photos/200/300/?blur=2" alt="" width="350" height="200" class="float-left mr-3">-->
+<!--                        {% endif %}-->
+                            <h5 class="card-title  ">{{ news_item.title }}</h5>
+                            <h5 class="card-title  ">Горячая вода (Ванна):{{ news_item.hot_water_big }}</h5>
+                            <h5 class="card-title  ">Горячая вода (Туалет): {{ news_item.hot_water_small }}</h5>
+                            <h5 class="card-title  ">Холодная вода (Ванна): {{ news_item.cold_water_big }}</h5>
+                            <h5 class="card-title  ">Холодная вода (Туалет): {{ news_item.cold_water_small }}</h5>
+                            <h5 class="card-title  ">Электроэнергия: {{ news_item.electricity }}</h5>
+                            <h5 class="card-title  ">Отопление: {{ news_item.warm }}</h5>
+                            <p class="card-text">{{ news_item.content|safe|linebreaks }}</p>
+
+
+                </div>
+                <div class="card-footer text-muted">
+                    Показания переданы: {{news_item.published|date:"d M Y в H:i" }}
+                </div>
+            </div>
+{% endblock %}
